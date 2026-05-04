@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#08030f">
+    <meta
+      name="description"
+      content="Retro Ridge Rally is a neon 3D browser car game ready for GitHub Pages."
+    >
+    <title>Car Game | Retro Ridge Rally</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="game-shell" aria-label="Retro Ridge Rally">
+      <canvas id="game-canvas" aria-label="Retro 3D car race"></canvas>
+
+      <div class="crt-layer" aria-hidden="true"></div>
+      <div class="vignette-layer" aria-hidden="true"></div>
+
+      <section id="start-screen" class="screen screen--active" aria-labelledby="game-title">
+        <p class="kicker">CAR GAME</p>
+        <h1 id="game-title">Retro Ridge Rally</h1>
+        <p class="marquee">NEON RUN / LOW POLY / HIGH SCORE</p>
+        <button id="start-button" class="primary-button" type="button">Start</button>
+      </section>
+
+      <section id="pause-panel" class="screen screen--compact" hidden aria-labelledby="pause-title">
+        <p class="kicker">PAUSED</p>
+        <h2 id="pause-title">Hold The Line</h2>
+        <button id="resume-button" class="primary-button" type="button">Resume</button>
+      </section>
+
+      <section id="game-over" class="screen screen--compact" hidden aria-labelledby="game-over-title">
+        <p class="kicker">RUN ENDED</p>
+        <h2 id="game-over-title">Highway Ghosted</h2>
+        <p id="final-score" class="final-score">0</p>
+        <button id="restart-button" class="primary-button" type="button">Again</button>
+      </section>
+
+      <div id="hud" class="hud" hidden>
+        <div class="hud__stats" aria-live="polite">
+          <div class="stat">
+            <span>Score</span>
+            <strong id="score">000000</strong>
+          </div>
+          <div class="stat">
+            <span>Speed</span>
+            <strong><span id="speed">000</span> mph</strong>
+          </div>
+          <div class="meter" aria-label="Car condition">
+            <span>Armor</span>
+            <div class="meter__track">
+              <i id="health-bar"></i>
+            </div>
+          </div>
+          <div class="meter meter--boost" aria-label="Boost charge">
+            <span>Boost</span>
+            <div class="meter__track">
+              <i id="boost-bar"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud__buttons">
+          <button id="pause-button" class="icon-button" type="button" aria-label="Pause">II</button>
+          <button id="mute-button" class="icon-button" type="button" aria-label="Mute">♪</button>
+        </div>
+      </div>
+
+      <p id="toast" class="toast" hidden aria-live="polite"></p>
+
+      <div id="touch-controls" class="touch-controls" hidden aria-hidden="false">
+        <div class="touch-controls__cluster">
+          <button class="control-button" type="button" aria-label="Steer left" data-control="left">‹</button>
+          <button class="control-button" type="button" aria-label="Steer right" data-control="right">›</button>
+        </div>
+        <div class="touch-controls__cluster touch-controls__cluster--right">
+          <button class="control-button" type="button" aria-label="Brake" data-control="brake">⌄</button>
+          <button class="control-button" type="button" aria-label="Accelerate" data-control="accelerate">⌃</button>
+          <button class="control-button control-button--boost" type="button" aria-label="Boost" data-control="boost">✦</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p class="noscript">JavaScript is needed to play this browser game.</p>
+      </noscript>
+    </main>
+
+    <script type="module" src="./src/game.js"></script>
+  </body>
+</html>
